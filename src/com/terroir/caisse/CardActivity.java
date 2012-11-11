@@ -9,6 +9,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,15 +106,30 @@ public class CardActivity extends Activity {
 
 					Intent intent = getIntent();
 					String phone = intent.getStringExtra("telephone");
-					
-				    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(phone));			
-				    CardActivity.this.startActivity(callIntent);
+					if (phone != null){
+						 Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phone));			
+						    CardActivity.this.startActivity(callIntent);
+					}
+				   
 				}
 			});	
 			
+			ImageView mapButton = (ImageView) findViewById(R.id.mapButton);
+			mapButton.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent intent = getIntent();
+					Intent callIntent = new Intent(CardActivity.this, HomeMapActivity.class);			
+					CardActivity.this.startActivity(callIntent);
+					
+					
+				}
+			});
+			
 			String hashTag = getHashTag();
 			
-			InstagramLoader loader = (InstagramLoader) new InstagramLoader().execute(INSTAGRAM_TAGS + hashTag + INSTAGRAM_ACCESS_TOKEN);
+			InstagramLoader loader = (InstagramLoader) new InstagramLoader().execute(INSTAGRAM_TAGS + "terroir" + INSTAGRAM_ACCESS_TOKEN);
 					
 			producer.latitude = Double.parseDouble(intent.getStringExtra("latitude"));
 			producer.longitude = Double.parseDouble(intent.getStringExtra("longitude"));
@@ -162,7 +178,6 @@ public class CardActivity extends Activity {
 		else {
 			escapedName = name.replace(" ", "_");
 		}
-		escapedName = "#"+escapedName;
 		return escapedName;
 	}
 	
@@ -253,7 +268,7 @@ public class CardActivity extends Activity {
         sharingIntent.setType("text/plain");
         
         
-        String shareBody = getHashTag();
+        String shareBody = "#" + getHashTag();
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));

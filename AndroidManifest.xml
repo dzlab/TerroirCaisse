@@ -38,6 +38,10 @@
             android:screenOrientation="portrait"
             />
         
+          <activity android:name=".FullImage" 
+            android:screenOrientation="portrait"
+            />
+        
         <activity android:name=".MainActivity" android:theme="@style/tabTheme"
             android:screenOrientation="portrait">
             <intent-filter >
