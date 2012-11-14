@@ -23,10 +23,10 @@ public class DistanceComparator implements Comparator<Producer> {
     }
 	public float computeDistance(Location location, Producer producer) {
 		float[] res = new float[1];
-		try {
+		if(location!=null) {
 			Location.distanceBetween(location.getLatitude(), location.getLongitude(), producer.latitude, producer.longitude, res);
-		}catch(Exception e) {
-			e.printStackTrace();
+		}else {
+			System.out.println("Error when comparing two location ("+location+") to producer "+producer);
 		}
 		return res[0];
 	}

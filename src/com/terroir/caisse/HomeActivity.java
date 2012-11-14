@@ -15,6 +15,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -31,12 +32,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.terroir.caisse.adapter.HomeAdapter;
+import com.terroir.caisse.data.DBAdapter;
 import com.terroir.caisse.data.Producer;
 import com.terroir.caisse.helper.DistanceComparator;
 import com.terroir.caisse.helper.OpenDataXmlParser;
@@ -99,10 +100,14 @@ public class HomeActivity extends Activity {
     protected void load(String url) throws IOException, XmlPullParserException {
     	producers = null;
     	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    	if(prefs.contains("initiated")){
-    		//Toast.makeText(context, "Already initiated !", Toast.LENGTH_SHORT).show();
+    	if(prefs.contains("initiated")){    		
+    		Log.i(TAG, "Already initiated !");
+    		DBAdapter db = new DBAdapter(context);
+    		db.open();
+    		producers = db.query();
+    		db.close();
     	}else {
-    		//Toast.makeText(context, "First launch !", Toast.LENGTH_SHORT).show();
+    		//Log.i(TAG, "First launch !");
     		OpenDataXmlParser parser = new OpenDataXmlParser(HomeActivity.this);
     		InputStream stream = parser.downloadUrl(url);
     		Log.i(TAG, "parsing xml stream "+url); 
@@ -179,7 +184,7 @@ public class HomeActivity extends Activity {
 
         protected void onPreExecute() {
         	this.dialog.setTitle("TerroirCaisse");
-        	//this.dialog.setIcon(R.drawable.logo);
+        	this.dialog.setIcon(R.drawable.patch_by_bdrt1);
         	this.dialog.setMessage("Chargement en cours...");
         	//this.dialog.setProgressStyle(R.style.CustomDialogTheme);
         	this.dialog.setCancelable(false);
@@ -192,24 +197,26 @@ public class HomeActivity extends Activity {
             if (dialog.isShowing()) {
             	dialog.dismiss();
             	dialog = null;
-        }
+            }
 
-        if (success) {
+            if (success) {
             //Toast.makeText(context, "OK", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(HomeActivity.this, "Erreur de connexion", Toast.LENGTH_LONG).show();
+            } else {
+            	Toast.makeText(HomeActivity.this, "Erreur de connexion", Toast.LENGTH_LONG).show();
+            }
+    
         }
-    }
 
-    protected Boolean doInBackground(final String... url) {
-        try{        	
-            load(url[0]);
-            return true;
-         } catch (Exception e){
-            e.printStackTrace();
-            return false;
-         }
-      }
+    
+        protected Boolean doInBackground(final String... url) {        
+        	try{        	            
+        		load(url[0]);            
+        		return true;         
+        	} catch (Exception e){           
+        		e.printStackTrace();            
+        		return false;         
+        	}      
+        }
     }
     
 

@@ -70,8 +70,8 @@ public class HomeMapActivity extends MapActivity implements LocationListener {
 	    	Intent intent = getIntent();
 	    	p = new Producer();
 	    	p.raison_social = intent.getStringExtra("raison_social");
-	    	p.latitude = Double.parseDouble(intent.getStringExtra("latitude"));
-	    	p.longitude = Double.parseDouble(intent.getStringExtra("longitude"));
+	    	p.latitude = intent.getDoubleExtra("latitude", 36.802997);
+	    	p.longitude = intent.getDoubleExtra("longitude", 3.048706);
 	    	p.sous_type = intent.getStringExtra("sous_type");
 	    	p.address = intent.getStringExtra("address");
 	    	p.mail = intent.getStringExtra("mail");

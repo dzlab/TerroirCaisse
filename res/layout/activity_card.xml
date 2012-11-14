@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:orientation="vertical" 
-         android:padding="15px"
+         android:padding="15dip"
         >
     <TextView
         android:id="@+id/txtViewName"
@@ -59,13 +59,6 @@
            
             
         </LinearLayout>
-
-    <Button
-            android:id="@+id/tweetButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Commenter"
-            android:src="@drawable/sharing" />
     
     <GridView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -103,13 +96,26 @@
             android:src="@drawable/favorit" />
         
          <ImageView
+            android:id="@+id/tweetButton"
+            android:layout_width="48px"
+            android:layout_height="48px"
+            android:layout_margin="15px"
+            android:src="@drawable/tweet" /> 
+            
+         <ImageView
             android:id="@+id/sharingButton"
             android:layout_width="48px"
             android:layout_height="48px"
             android:layout_margin="15px"
             android:src="@drawable/share" />
-        
-        
+                
+         <ImageView
+            android:id="@+id/infoButton"
+            android:layout_width="48px"
+            android:layout_height="48px"
+            android:layout_margin="15px"
+            android:src="@drawable/info" /> 
+            
     </LinearLayout>
 
 

@@ -1,6 +1,8 @@
 package com.terroir.caisse.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.content.ContentValues;
@@ -59,18 +61,29 @@ public class DBAdapter {
 		return db.delete("producers", "_id="+id, null)>0;
 	}
 	
-	public Cursor query(){
-		return db.query("producers", new String[]{
-				"_id",
-				"raison_social",
-				"sous_type",
-				"address",
-				"code_postal",
-				"ville",
-				"mail",
-				"telephone",
-				"latitude",
-				"longitude"}, null, null, null, null, null);
+	public List<Producer> query(){
+		List<Producer> producers = new ArrayList<Producer>();
+		Cursor cursor = db.query("producers", new String[]{"_id","raison_social","sous_type","address","code_postal","ville","mail","telephone","latitude","longitude"}, null, null, null, null, null);
+		//cursor.moveToFirst();
+		while(cursor.isAfterLast() == false) {
+			Producer p = new Producer();
+			try {				
+				p.raison_social = cursor.getString(cursor.getColumnIndex("raison_social"));				
+				p.sous_type = cursor.getString(cursor.getColumnIndex("sous_type"));				
+				p.address = cursor.getString(cursor.getColumnIndex("address"));				
+				p.code_postal = cursor.getString(cursor.getColumnIndex("code_postal"));				
+				p.ville = cursor.getString(cursor.getColumnIndex("ville"));			
+				p.mail = cursor.getString(cursor.getColumnIndex("mail"));			
+				p.telephone = cursor.getString(cursor.getColumnIndex("telephone"));
+				p.latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex("latitude")));
+				p.longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex("longitude")));
+				
+			}finally {
+				producers.add(p);		
+				cursor.moveToNext();
+			}			
+		}
+		return producers;
 	}
 
 	public Map<String, Integer> categories() {

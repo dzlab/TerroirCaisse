@@ -114,16 +114,22 @@ public class CardActivity extends Activity {
 				}
 			});	
 			
+			producer.latitude = intent.getDoubleExtra("latitude", 36.802997);
+	    	producer.longitude = intent.getDoubleExtra("longitude", 3.048706);			
 			ImageView mapButton = (ImageView) findViewById(R.id.mapButton);
-			mapButton.setOnClickListener(new OnClickListener() {
-				
+			mapButton.setOnClickListener(new OnClickListener() {				
 				@Override
-				public void onClick(View v) {
-					Intent intent = getIntent();
-					Intent callIntent = new Intent(CardActivity.this, HomeMapActivity.class);			
-					CardActivity.this.startActivity(callIntent);
-					
-					
+				public void onClick(View v) {					
+					Intent callIntent = new Intent(CardActivity.this, HomeMapActivity.class);	
+					callIntent.putExtra("raison_social", producer.raison_social);
+					callIntent.putExtra("sous_type", producer.sous_type);
+					callIntent.putExtra("address", producer.address);
+					callIntent.putExtra("mail", producer.mail);
+					callIntent.putExtra("telephone", producer.telephone);
+					callIntent.putExtra("ville", producer.ville);
+					callIntent.putExtra("latitude", producer.latitude);
+					callIntent.putExtra("longitude", producer.longitude);			    	
+					CardActivity.this.startActivity(callIntent);					
 				}
 			});
 			
@@ -131,8 +137,6 @@ public class CardActivity extends Activity {
 			
 			InstagramLoader loader = (InstagramLoader) new InstagramLoader().execute(INSTAGRAM_TAGS + "terroir" + INSTAGRAM_ACCESS_TOKEN);
 					
-			producer.latitude = Double.parseDouble(intent.getStringExtra("latitude"));
-			producer.longitude = Double.parseDouble(intent.getStringExtra("longitude"));
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -147,8 +151,7 @@ public class CardActivity extends Activity {
           }
         });
         
-        Button tweetButton = (Button) findViewById(R.id.tweetButton);
-        
+        ImageView tweetButton = (ImageView) findViewById(R.id.tweetButton);        
         tweetButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
               tweetIt();
@@ -264,14 +267,16 @@ public class CardActivity extends Activity {
 	}
 	
 	private void tweetIt(){
-		 Intent sharingIntent = findTwitterClient();
-        sharingIntent.setType("text/plain");
-        
-        
-        String shareBody = "#" + getHashTag();
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+		Intent sharingIntent = findTwitterClient();
+		if(sharingIntent != null) {
+	        sharingIntent.setType("text/plain");	        	        
+	        String shareBody = "#" + getHashTag();
+	        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+	        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+	        startActivity(Intent.createChooser(sharingIntent, "Share via"));			
+		}else {
+			Toast.makeText(CardActivity.this, "Cannot find a Twitter client installed on your device", Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	private void shareIt(){
