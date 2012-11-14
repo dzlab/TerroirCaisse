@@ -1,6 +1,5 @@
 package com.terroir.caisse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -12,18 +11,16 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.terroir.caisse.adapter.HomeAdapter;
+import com.terroir.caisse.data.DBAdapter;
 import com.terroir.caisse.data.Producer;
 
 
 public class FavorisActivity extends Activity {
 	
-	public static List<Producer> producers = new ArrayList<Producer>();
-	public static void add(Producer p) {
-		producers.add(p);
-	}
+	protected List<Producer> producers;
+	
 	
 	protected HomeAdapter adapter;
 	protected ListView list;
@@ -32,11 +29,18 @@ public class FavorisActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        
-        //TextView textview = new TextView(this);
-        //textview.setText("This is Apple tab");
-        
         context = this;
+        
+        DBAdapter db = new DBAdapter(context);
+        try{
+        	db.open();
+            producers = db.bookmarked();	
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }finally {
+        	db.close();	
+        }             
+        
         list = (ListView) FavorisActivity.this.findViewById(R.id.lstProducers);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override

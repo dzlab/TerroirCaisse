@@ -9,7 +9,6 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,10 +28,10 @@ import android.os.Bundle;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +39,7 @@ import android.widget.Toast;
 
 import com.example.gallery_test2.ImageAdapter;
 import com.example.gallery_test2.ImageData;
+import com.terroir.caisse.data.DBAdapter;
 import com.terroir.caisse.data.Producer;
 
 public class CardActivity extends Activity {
@@ -48,13 +49,14 @@ public class CardActivity extends Activity {
 	private static String INSTAGRAM_TAGS = "https://api.instagram.com/v1/tags/";
 	
 	private static String INSTAGRAM_ACCESS_TOKEN = "/media/recent?access_token=49812874.f59def8.7faedd01ba4845ffa9cee60a7d369f02";
-	
+	protected Context context; 
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_card);
+		context = this;
 		final Producer producer = new Producer();		
 			
 		try {
@@ -81,8 +83,7 @@ public class CardActivity extends Activity {
 			producer.addresse_web = website;
 			TextView websiteText = (TextView) findViewById(R.id.txtViewWebSite);
 			websiteText.setText(website);
-			
-			
+						
 			
 			String phone = intent.getStringExtra("telephone");
 			
@@ -101,8 +102,7 @@ public class CardActivity extends Activity {
 					// listen for phone state changes to restart the app when the initiated call ends
 					EndCallListener callListener = new EndCallListener();
 					TelephonyManager mTM = (TelephonyManager)CardActivity.this.getSystemService(Context.TELEPHONY_SERVICE);
-					mTM.listen(callListener, PhoneStateListener.LISTEN_CALL_STATE);
-					
+					mTM.listen(callListener, PhoneStateListener.LISTEN_CALL_STATE);					
 
 					Intent intent = getIntent();
 					String phone = intent.getStringExtra("telephone");
@@ -133,6 +133,21 @@ public class CardActivity extends Activity {
 				}
 			});
 			
+			ImageView infoButton = (ImageView) findViewById(R.id.infoButton);
+			infoButton.setOnClickListener(new OnClickListener() {				
+				@Override
+				public void onClick(View v) {	
+					LayoutInflater factory = CardActivity.this.getLayoutInflater();
+	                final View alertDialogView = factory.inflate(R.layout.dialog_bdrt, null);
+	                AlertDialog.Builder adb = new AlertDialog.Builder(CardActivity.this); 
+	                adb.setView(alertDialogView);
+	                adb.setTitle("Information fournis par la BDRT"); 
+	                ImageView logo = (ImageView) alertDialogView.findViewById(R.id.logo_bdrt);
+	                logo.setImageResource(R.drawable.bdrt_logotype_noir);	                
+	                adb.show();
+				}
+			});	
+			
 			String hashTag = getHashTag();
 			
 			InstagramLoader loader = (InstagramLoader) new InstagramLoader().execute(INSTAGRAM_TAGS + "terroir" + INSTAGRAM_ACCESS_TOKEN);
@@ -161,9 +176,20 @@ public class CardActivity extends Activity {
         ImageView bookmarkButton = (ImageView) findViewById(R.id.bookmarkButton);
 		bookmarkButton.setOnClickListener(new OnClickListener() {						
 			@Override				
-			public void onClick(View v) {				
-				FavorisActivity.add(producer);					
-				Toast.makeText(CardActivity.this,"Bookmarking this producer: "+producer, Toast.LENGTH_LONG).show();
+			public void onClick(View v) {
+				DBAdapter db = new DBAdapter(context);
+				try {	
+			        db.open();
+			        long code = db.bookmark(producer);
+			        if(code == -1)
+			        	Toast.makeText(CardActivity.this,"Echec de sauvegarde du producteur de terroir sélectionné "+producer.raison_social+"'", Toast.LENGTH_LONG).show();
+			        else
+			        	Toast.makeText(CardActivity.this,"Sauvegarde réussie du producteur de terroir sélectionné '"+producer.raison_social+"'", Toast.LENGTH_LONG).show();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					db.close();
+				}
 			}				
 		});
 	}

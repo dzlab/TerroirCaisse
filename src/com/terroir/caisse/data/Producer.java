@@ -23,6 +23,11 @@ public class Producer {
 		this.telephone = telephone;
 	}
 	
+	/** Check whether this instance is null (i.e. contains no information) */
+	public boolean isNull() {
+		return (raison_social==null);
+	}
+	
 	public String toString() {
 		return "{raison_social: '"+raison_social+"', sous_type:'"+sous_type+"', address:'"+address+"', ville: '"+ville+"', code_postal: '"+code_postal+"', telephone:'"+telephone+"', mail:'"+mail+"', latitude:'"+latitude+"', longitude:'"+longitude+"'}";
 	}

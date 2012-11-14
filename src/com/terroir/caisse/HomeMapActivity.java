@@ -77,7 +77,7 @@ public class HomeMapActivity extends MapActivity implements LocationListener {
 	    	p.mail = intent.getStringExtra("mail");
 	    	p.telephone = intent.getStringExtra("telephone");
 	    	p.ville = intent.getStringExtra("ville");
-	    	filter = true;
+	    	filter = !p.isNull();
 	    }catch(Exception e) {
 	    	e.printStackTrace();
 	    }

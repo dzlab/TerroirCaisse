@@ -73,22 +73,23 @@ public final class R {
         public static final int image=0x7f080014;
         public static final int imgCategory=0x7f080011;
         public static final int imgPhone=0x7f080004;
-        public static final int imgProducerCategory=0x7f080015;
+        public static final int imgProducerCategory=0x7f080016;
         public static final int infoButton=0x7f08000b;
         public static final int linearLayout1=0x7f080006;
+        public static final int logo_bdrt=0x7f080015;
         public static final int lstCategories=0x7f08000c;
         public static final int lstProducers=0x7f08000e;
         public static final int mapButton=0x7f080007;
-        public static final int map_option=0x7f08001a;
+        public static final int map_option=0x7f08001b;
         public static final int myGmap=0x7f080010;
         public static final int sharingButton=0x7f08000a;
         public static final int tweetButton=0x7f080009;
         public static final int txtCategory=0x7f080012;
         public static final int txtCount=0x7f080013;
-        public static final int txtDetail=0x7f080017;
-        public static final int txtDistance=0x7f080018;
-        public static final int txtMapPopup=0x7f080019;
-        public static final int txtNom=0x7f080016;
+        public static final int txtDetail=0x7f080018;
+        public static final int txtDistance=0x7f080019;
+        public static final int txtMapPopup=0x7f08001a;
+        public static final int txtNom=0x7f080017;
         public static final int txtPhone=0x7f080003;
         public static final int txtViewMail=0x7f080001;
         public static final int txtViewName=0x7f080000;
@@ -102,10 +103,11 @@ public final class R {
         public static final int activity_map_home=0x7f030004;
         public static final int category_list_item=0x7f030005;
         public static final int cell=0x7f030006;
-        public static final int full_image_display=0x7f030007;
-        public static final int home_list_item=0x7f030008;
-        public static final int main=0x7f030009;
-        public static final int map_popup=0x7f03000a;
+        public static final int dialog_bdrt=0x7f030007;
+        public static final int full_image_display=0x7f030008;
+        public static final int home_list_item=0x7f030009;
+        public static final int main=0x7f03000a;
+        public static final int map_popup=0x7f03000b;
     }
     public static final class menu {
         public static final int options=0x7f070000;

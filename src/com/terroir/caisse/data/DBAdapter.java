@@ -16,6 +16,8 @@ public class DBAdapter {
 	DatabaseHelper	DBHelper;
 	Context			context;
 	SQLiteDatabase	db;
+	public static final String TABLE_PRODUCERS = "producers";	
+	public static final String TABLE_BOOKMARKS = "bookmarks";
 	
 	public static String TAG = DBAdapter.class.getSimpleName();
 	
@@ -34,11 +36,13 @@ public class DBAdapter {
 	}
 	
 	public void drop() {
-		db.execSQL("DROP TABLE IF EXISTS producers");
+		db.execSQL("DROP TABLE IF EXISTS producers");	
+		db.execSQL("DROP TABLE IF EXISTS "+TABLE_BOOKMARKS);
 	}
 	
 	public void Truncate(){
-		db.execSQL("DELETE FROM producers");
+		db.execSQL("DELETE FROM producers");		
+		db.execSQL("DELETE FROM "+TABLE_BOOKMARKS);
 	}
 	
 	public long insert(Producer producer){
@@ -56,10 +60,28 @@ public class DBAdapter {
 		return db.insert("producers", null, values);		
 	}
 	
+	public long bookmark(Producer producer){
+		ContentValues values = new ContentValues();
+		values.put("raison_social", producer.raison_social);
+		values.put("sous_type", producer.sous_type);
+		values.put("address", producer.address);
+		values.put("code_postal", producer.code_postal);
+		values.put("ville", producer.ville);
+		values.put("mail", producer.mail);
+		values.put("telephone", producer.telephone);
+		values.put("latitude", String.valueOf(producer.latitude));
+		values.put("longitude", String.valueOf(producer.longitude));
+		
+		return db.insert(TABLE_BOOKMARKS, null, values);		
+	}
 	
-	public boolean supprimerProduit(long id){
+	public boolean delete(long id){
 		return db.delete("producers", "_id="+id, null)>0;
 	}
+	
+	public boolean unbookmark(long id){
+		return db.delete(TABLE_BOOKMARKS, "_id="+id, null)>0;
+	}	
 	
 	public List<Producer> query(){
 		List<Producer> producers = new ArrayList<Producer>();
@@ -85,7 +107,35 @@ public class DBAdapter {
 		}
 		return producers;
 	}
-
+	
+	/**@return {@link List} of {@link Producer} instance already book-marked by user*/
+	public List<Producer> bookmarked() {
+		List<Producer> producers = new ArrayList<Producer>();
+		Cursor cursor = db.query(TABLE_BOOKMARKS, new String[]{"_id","raison_social","sous_type","address","code_postal","ville","mail","telephone","latitude","longitude"}, null, null, null, null, null);
+		cursor.moveToFirst();
+		while(cursor.isAfterLast() == false) {			
+			try {			
+				Producer p = new Producer();
+				p.raison_social = cursor.getString(cursor.getColumnIndex("raison_social"));				
+				p.sous_type = cursor.getString(cursor.getColumnIndex("sous_type"));				
+				p.address = cursor.getString(cursor.getColumnIndex("address"));				
+				p.code_postal = cursor.getString(cursor.getColumnIndex("code_postal"));				
+				p.ville = cursor.getString(cursor.getColumnIndex("ville"));			
+				p.mail = cursor.getString(cursor.getColumnIndex("mail"));			
+				p.telephone = cursor.getString(cursor.getColumnIndex("telephone"));
+				p.latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex("latitude")));
+				p.longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex("longitude")));
+				producers.add(p);
+			}catch(Exception e) {
+				e.printStackTrace();
+				
+			}finally {						
+				cursor.moveToNext();
+			}			
+		}
+		return producers;
+	}
+	
 	public Map<String, Integer> categories() {
 		Map<String, Integer> map = new HashMap<String, Integer>(); 
 		Cursor cur = db.query("producers", new String[]{"sous_type"}, null, null, "sous_type", null, null);
