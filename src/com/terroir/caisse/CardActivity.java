@@ -70,14 +70,16 @@ public class CardActivity extends Activity {
 			producer.raison_social = name;
 			TextView text = (TextView) findViewById(R.id.txtViewName);
 			text.setText(name);
-
+			
+			String address = intent.getStringExtra("address");
+			producer.address = address;
+			TextView addressText = (TextView) findViewById(R.id.txtViewAddr);
+			addressText.setText(address);
 			
 			String mail = intent.getStringExtra("mail");
 			producer.mail = mail;
 			TextView mailText = (TextView) findViewById(R.id.txtViewMail);
-			mailText.setText(mail);
-			
-			
+			mailText.setText(mail);			
 			
 			String website = intent.getStringExtra("addresse_web");
 			producer.addresse_web = website;

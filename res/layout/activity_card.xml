@@ -19,6 +19,14 @@
         android:text="name" />
 
     <TextView
+        android:id="@+id/txtViewAddr"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="9pt"
+        android:textColor="#FFFFFF"
+        android:text="mail" />
+    
+    <TextView
         android:id="@+id/txtViewMail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

@@ -78,8 +78,12 @@ public class OpenDataXmlParser {
                 //entries.add(readEntry(parser));
             } else if(name.equals("content")) {            	
             	Producer producer = readContent(parser); 
-            	db.insert(producer);
-            	entries.add(producer);
+            	// Skip alcohol
+            	if(!(producer.sous_type!=null && producer.sous_type.toUpperCase().contains("VIN"))) {
+            		db.insert(producer);
+                	entries.add(producer);
+            	}
+            	
             } else {
                 skip(parser);
             }
