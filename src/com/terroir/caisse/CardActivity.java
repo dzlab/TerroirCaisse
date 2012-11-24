@@ -89,8 +89,7 @@ public class CardActivity extends Activity {
 			
 			String phone = intent.getStringExtra("telephone");
 			
-			if (phone == null)
-			{
+			if (phone == null) {
 				phone = "0346782132";
 			}
 			producer.telephone = phone;
@@ -108,7 +107,7 @@ public class CardActivity extends Activity {
 
 					Intent intent = getIntent();
 					String phone = intent.getStringExtra("telephone");
-					if (phone != null){
+					if (phone != null) {
 						 Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phone));			
 						    CardActivity.this.startActivity(callIntent);
 					}

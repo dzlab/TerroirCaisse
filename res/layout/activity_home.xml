@@ -14,7 +14,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_alignBottom="@id/lstProducers" >
-
+
 	    <ImageButton
 	        android:id="@+id/btnHomeMap"
 	        android:layout_width="fill_parent"
@@ -23,17 +23,16 @@
 	        android:background="#8c9e92"
 	        android:padding="10dip"
 	        android:src="@drawable/pinblanc"
-	        android:text="Show map" />
+	        />
 
-<!--
-	    <Button
-	        android:id="@+id/btnHomeList"
-	        android:layout_width="wrap_content"
+		<ImageView
+            android:id="@+id/btnHomeInfo"
+            android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignParentBottom="true"
-	        android:layout_alignParentRight="true"
-	        android:text="Show list" />
--->
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/info" />
+	    
 	</RelativeLayout>
 
 </RelativeLayout>

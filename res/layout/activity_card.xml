@@ -92,36 +92,36 @@
  		 <ImageView
             android:id="@+id/mapButton"
             android:layout_width="48px"
-            android:layout_height="48px"
-            android:layout_margin="15px"
+            android:layout_height="48px"   
+            android:layout_marginTop="15px"         
             android:src="@drawable/pinblanc" />
         
         <ImageView
             android:id="@+id/bookmarkButton"
             android:layout_width="48px"
-            android:layout_height="48px"
-            android:layout_margin="15px"
+            android:layout_height="48px"   
+            android:layout_marginTop="15px"         
             android:src="@drawable/favorit" />
         
          <ImageView
             android:id="@+id/tweetButton"
             android:layout_width="48px"
-            android:layout_height="48px"
-            android:layout_margin="15px"
+            android:layout_height="48px"   
+            android:layout_marginTop="15px"         
             android:src="@drawable/tweet" /> 
             
          <ImageView
             android:id="@+id/sharingButton"
             android:layout_width="48px"
-            android:layout_height="48px"
-            android:layout_margin="15px"
+            android:layout_height="48px"   
+            android:layout_marginTop="15px"         
             android:src="@drawable/share" />
                 
          <ImageView
             android:id="@+id/infoButton"
             android:layout_width="48px"
             android:layout_height="48px"
-            android:layout_margin="15px"
+            android:layout_marginTop="15px"
             android:src="@drawable/info" /> 
             
     </LinearLayout>
