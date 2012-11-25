@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <!-- <color name="list_background">#351d11</color> -->
+    <color name="list_background">#002F2F</color>
+    <!-- <color name="bottom_bar_background">#87998D</color> -->
+    <color name="bottom_bar_background">#046380</color>
+    <!-- <color name="tab_selected">#b95e41</color> -->
+    <color name="tab_selected">#F7931E</color>
+    <!-- <color name="tab_unselected">#aaa97b</color> -->
+    <color name="tab_unselected">#046380</color>
+    <color name="divider">#406363</color>
 </resources>

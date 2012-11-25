@@ -11,6 +11,20 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int black=0x7f040001;
+        /**  <color name="bottom_bar_background">#87998D</color> 
+         */
+        public static final int bottom_bar_background=0x7f040003;
+        public static final int divider=0x7f040006;
+        /**  <color name="list_background">#351d11</color> 
+         */
+        public static final int list_background=0x7f040002;
+        /**  <color name="tab_selected">#b95e41</color> 
+         */
+        public static final int tab_selected=0x7f040004;
+        /**  <color name="tab_unselected">#aaa97b</color> 
+         */
+        public static final int tab_unselected=0x7f040005;
         public static final int white=0x7f040000;
     }
     public static final class drawable {
@@ -116,6 +130,7 @@ public final class R {
     }
     public static final class string {
         /** <string name="apikey">0823kLjRK9RIchjxo9tWjRVyNDsjv0ynF9WirGA</string>
+ Old debug key <string name="apikey">0z0m8xZ4-BLLIPj_MPmP_zjhzGuUEXsw-ea-D-w</string>
          */
         public static final int apikey=0x7f050001;
         public static final int app_name=0x7f050000;

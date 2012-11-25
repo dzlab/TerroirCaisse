@@ -2,11 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"    
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/list_background"
     >
 	<ListView android:id="@+id/lstProducers"
 	    android:layout_width="fill_parent" 
 	    android:layout_height="fill_parent"
-	    android:background="#351d11">	   
+	    android:background="@color/list_background"
+	    android:divider="@color/divider"
+    	android:dividerHeight="2dip" >	   
 	</ListView>
 	
 	<RelativeLayout
@@ -19,8 +22,8 @@
 	        android:id="@+id/btnHomeMap"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_alignParentBottom="true"
-	        android:background="#8c9e92"
+	        android:layout_alignParentBottom="true"	        
+	    	android:background="@color/bottom_bar_background"
 	        android:padding="10dip"
 	        android:src="@drawable/pinblanc"
 	        />

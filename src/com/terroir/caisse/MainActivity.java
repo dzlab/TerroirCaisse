@@ -53,10 +53,14 @@ public class MainActivity extends TabActivity implements OnTabChangeListener {
 	}
 
 	private void setSelectedTabColor() {
+		//int color_selected = Color.parseColor("#b95e41");
+		int color_selected = getResources().getColor(R.color.tab_selected);
+		//int color_unselected=Color.parseColor("#aaa97b");
+		int color_unselected=getResources().getColor(R.color.tab_unselected);
         for(int i=0;i<tabHost.getTabWidget().getChildCount();i++) {  
-            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#aaa97b"));              
+            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(color_unselected);              
         }  
-        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#b95e41"));   
+        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(color_selected);   
         
         tabHost.setOnTabChangedListener(this);
     }

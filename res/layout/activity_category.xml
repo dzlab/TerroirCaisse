@@ -6,7 +6,9 @@
 	<ListView android:id="@+id/lstCategories"
 	    android:layout_width="fill_parent" 
 	    android:layout_height="fill_parent"
-	    android:background="#351d11">	   
+	    android:background="@color/list_background"
+	    android:divider="@color/divider"
+    	android:dividerHeight="2dip" >	   
 	</ListView>
 		
 
