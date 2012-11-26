@@ -128,9 +128,6 @@ public final class R {
         public static final int options=0x7f070000;
     }
     public static final class string {
-        /** <string name="apikey">0823kLjRK9RIchjxo9tWjRVyNDsjv0ynF9WirGA</string>
- Old debug key <string name="apikey">0z0m8xZ4-BLLIPj_MPmP_zjhzGuUEXsw-ea-D-w</string>
-         */
         public static final int apikey=0x7f050001;
         public static final int app_name=0x7f050000;
     }

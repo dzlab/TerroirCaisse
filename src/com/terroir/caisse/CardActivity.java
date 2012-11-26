@@ -148,7 +148,7 @@ public class CardActivity extends Activity {
 			
 			String hashTag = getHashTag();
 			
-			InstagramLoader loader = (InstagramLoader) new InstagramLoader().execute(INSTAGRAM_TAGS + "terroir" + INSTAGRAM_ACCESS_TOKEN);
+			//InstagramLoader loader = (InstagramLoader) new InstagramLoader().execute(INSTAGRAM_TAGS + "terroir" + INSTAGRAM_ACCESS_TOKEN);
 					
 			
 		}catch(Exception e) {
