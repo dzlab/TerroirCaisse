@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -62,14 +61,12 @@ public class FilteredProducersActivity extends Activity {
 		infoButton.setOnClickListener(new OnClickListener() {				
 			@Override
 			public void onClick(View v) {	
-				LayoutInflater factory = FilteredProducersActivity.this.getLayoutInflater();
-                final View alertDialogView = factory.inflate(R.layout.dialog_bdrt, null);
-                AlertDialog.Builder adb = new AlertDialog.Builder(FilteredProducersActivity.this); 
-                adb.setView(alertDialogView);
-                adb.setTitle("Information fournis par la BDRT"); 
-                ImageView logo = (ImageView) alertDialogView.findViewById(R.id.logo_bdrt);
-                logo.setImageResource(R.drawable.bdrt_logotype_noir);	                
-                adb.show();
+				Dialog dialog = new Dialog(FilteredProducersActivity.this);
+				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+				dialog.setContentView(R.layout.dialog_bdrt);				
+				ImageView logo = (ImageView) dialog.findViewById(R.id.logo_bdrt);				
+                logo.setImageResource(R.drawable.promo);                           
+                dialog.show();
 			}
 		});
         // get the category for filtering from the initial activity

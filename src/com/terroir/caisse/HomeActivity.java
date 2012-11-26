@@ -11,12 +11,11 @@ import java.util.Map;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -26,7 +25,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -95,14 +93,12 @@ public class HomeActivity extends Activity {
 		infoButton.setOnClickListener(new OnClickListener() {				
 			@Override
 			public void onClick(View v) {	
-				LayoutInflater factory = HomeActivity.this.getLayoutInflater();
-                final View alertDialogView = factory.inflate(R.layout.dialog_bdrt, null);
-                AlertDialog.Builder adb = new AlertDialog.Builder(HomeActivity.this); 
-                adb.setView(alertDialogView);
-                adb.setTitle("Information fournis par la BDRT"); 
-                ImageView logo = (ImageView) alertDialogView.findViewById(R.id.logo_bdrt);
-                logo.setImageResource(R.drawable.bdrt_logotype_noir);	                
-                adb.show();
+				Dialog dialog = new Dialog(HomeActivity.this);
+				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+				dialog.setContentView(R.layout.dialog_bdrt);				
+				ImageView logo = (ImageView) dialog.findViewById(R.id.logo_bdrt);				
+                logo.setImageResource(R.drawable.promo);                           
+                dialog.show();
 			}
 		});
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);				

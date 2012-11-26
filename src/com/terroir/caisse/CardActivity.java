@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,7 +28,6 @@ import android.os.Bundle;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -138,14 +137,12 @@ public class CardActivity extends Activity {
 			infoButton.setOnClickListener(new OnClickListener() {				
 				@Override
 				public void onClick(View v) {	
-					LayoutInflater factory = CardActivity.this.getLayoutInflater();
-	                final View alertDialogView = factory.inflate(R.layout.dialog_bdrt, null);
-	                AlertDialog.Builder adb = new AlertDialog.Builder(CardActivity.this); 
-	                adb.setView(alertDialogView);
-	                adb.setTitle("Information fournis par la BDRT"); 
-	                ImageView logo = (ImageView) alertDialogView.findViewById(R.id.logo_bdrt);
-	                logo.setImageResource(R.drawable.bdrt_logotype_noir);	                
-	                adb.show();
+					Dialog dialog = new Dialog(CardActivity.this);
+					dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+					dialog.setContentView(R.layout.dialog_bdrt);				
+					ImageView logo = (ImageView) dialog.findViewById(R.id.logo_bdrt);				
+	                logo.setImageResource(R.drawable.promo);                           
+	                dialog.show();
 				}
 			});	
 			
