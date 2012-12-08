@@ -144,8 +144,9 @@ public class OpenDataXmlParser {
             	skip(parser);
             }
         }
-        if(!numro.equals("") && !type_voie.equals("") && !voie.equals(""))
-        	producer.address = numro + " " + type_voie + " " + voie;
+        //if(!numro.equals("") && !type_voie.equals("") && !voie.equals(""))
+        	producer.address = (numro + " " + type_voie + " " + voie).trim();
+        	
         //Log.i(TAG, producer.toString());
         parser.nextTag(); // jump to the child element
         parser.require(XmlPullParser.END_TAG, ns, "content");        

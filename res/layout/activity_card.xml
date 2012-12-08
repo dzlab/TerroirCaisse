@@ -8,13 +8,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:orientation="vertical" 
-         android:padding="15dip"
+        android:padding="15dip"
         >
     <TextView
         android:id="@+id/txtViewName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="9pt"
+        android:textSize="10pt"
         android:textColor="#FFFFFF"
         android:text="name" />
 
@@ -24,7 +24,15 @@
         android:layout_height="wrap_content"
         android:textSize="9pt"
         android:textColor="#FFFFFF"
-        android:text="mail" />
+        android:text="address" />
+    
+    <TextView
+        android:id="@+id/txtViewTown"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="9pt"
+        android:textColor="#FFFFFF"
+        android:text="town" />
     
     <TextView
         android:id="@+id/txtViewMail"

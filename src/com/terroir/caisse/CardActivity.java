@@ -75,6 +75,11 @@ public class CardActivity extends Activity {
 			TextView addressText = (TextView) findViewById(R.id.txtViewAddr);
 			addressText.setText(address);
 			
+			String ville = intent.getStringExtra("ville");
+			producer.address = address;
+			TextView villeText = (TextView) findViewById(R.id.txtViewTown);
+			villeText.setText(ville);
+			
 			String mail = intent.getStringExtra("mail");
 			producer.mail = mail;
 			TextView mailText = (TextView) findViewById(R.id.txtViewMail);
