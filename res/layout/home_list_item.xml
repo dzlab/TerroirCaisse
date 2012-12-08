@@ -20,12 +20,24 @@
 	    android:layout_toRightOf="@id/imgProducerCategory">
 	    
 	</TextView>
-	<TextView android:id="@+id/txtDetail" 
+	
+	<TextView android:id="@+id/txtVille"
 	    android:text="TextView02" 
+	    android:layout_width="wrap_content" 
+	    android:layout_height="wrap_content" 
+	    android:textSize="10dip"	    
+	    android:textColor="@color/white"
+	    android:layout_below="@id/txtNom"
+	    android:layout_toRightOf="@id/imgProducerCategory">
+	    
+	</TextView>
+	
+	<TextView android:id="@+id/txtDetail" 
+	    android:text="TextView03" 
 	    android:layout_width="wrap_content" 
 	    android:layout_height="wrap_content"	    
 	    android:textSize="10dip"
-	    android:layout_below="@id/txtNom"
+	    android:layout_below="@id/txtVille"
 	    android:layout_toRightOf="@id/imgProducerCategory"
 	    android:textColor="@color/white">
 	    
@@ -36,7 +48,7 @@
 	    android:layout_width="wrap_content" 
 	    android:layout_height="wrap_content" 	    
 	    android:layout_alignParentRight="true"
-	    android:layout_alignParentBottom="true"
+	    android:layout_centerVertical="true"
 	    android:textColor="@color/white"
 	    >
 	    

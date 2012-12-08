@@ -42,6 +42,7 @@ public class HomeAdapter extends BaseAdapter {
 	public static class ViewHolder {
 		TextView text01;
 		TextView text02;
+		TextView text03;
 		TextView distance;
 		ImageView image;
 	}
@@ -54,7 +55,8 @@ public class HomeAdapter extends BaseAdapter {
 			convertView = myInflater.inflate(R.layout.home_list_item, null);
 			holder = new ViewHolder();
 			holder.text01 = (TextView) convertView.findViewById(R.id.txtNom);
-			holder.text02 = (TextView) convertView.findViewById(R.id.txtDetail);
+			holder.text02 = (TextView) convertView.findViewById(R.id.txtVille);
+			holder.text03 = (TextView) convertView.findViewById(R.id.txtDetail);
 			holder.distance = (TextView) convertView.findViewById(R.id.txtDistance);
 			holder.image = (ImageView) convertView.findViewById(R.id.imgProducerCategory);
 			convertView.setTag(holder);
@@ -63,7 +65,8 @@ public class HomeAdapter extends BaseAdapter {
 		}
 		
 		holder.text01.setText(producers.get(position).raison_social);
-		holder.text02.setText(producers.get(position).sous_type);
+		holder.text02.setText(producers.get(position).ville);
+		holder.text03.setText(producers.get(position).sous_type);
 		double distance = producers.get(position).distance / 10.0;
 		distance = Math.round(distance) / 100.0;
 		holder.distance.setText(String.valueOf(distance)+"km");

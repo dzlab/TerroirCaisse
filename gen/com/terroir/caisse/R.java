@@ -94,15 +94,15 @@ public final class R {
         public static final int lstCategories=0x7f08000e;
         public static final int lstProducers=0x7f080010;
         public static final int mapButton=0x7f080009;
-        public static final int map_option=0x7f08001e;
+        public static final int map_option=0x7f08001f;
         public static final int myGmap=0x7f080013;
         public static final int sharingButton=0x7f08000c;
         public static final int tweetButton=0x7f08000b;
         public static final int txtCategory=0x7f080015;
         public static final int txtCount=0x7f080016;
-        public static final int txtDetail=0x7f08001b;
-        public static final int txtDistance=0x7f08001c;
-        public static final int txtMapPopup=0x7f08001d;
+        public static final int txtDetail=0x7f08001c;
+        public static final int txtDistance=0x7f08001d;
+        public static final int txtMapPopup=0x7f08001e;
         public static final int txtNom=0x7f08001a;
         public static final int txtPhone=0x7f080005;
         public static final int txtViewAddr=0x7f080001;
@@ -110,6 +110,7 @@ public final class R {
         public static final int txtViewName=0x7f080000;
         public static final int txtViewTown=0x7f080002;
         public static final int txtViewWebSite=0x7f080004;
+        public static final int txtVille=0x7f08001b;
     }
     public static final class layout {
         public static final int activity_card=0x7f030000;
