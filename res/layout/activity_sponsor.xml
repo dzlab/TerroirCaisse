@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/bottom_bar_background"
+    android:paddingTop="50dip"
+    android:paddingBottom="10dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    >
+        
+    <ImageView
+        android:id="@+id/logo_bdrt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name" 
+        android:src="@drawable/logo"
+        />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" 
+        android:paddingTop="20dip"              
+        android:textSize="20dip"
+        android:textColor="@color/white"
+        android:text="Remerciements:"
+        />
+	<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" 
+        android:gravity="center" 
+        android:paddingTop="20dip"              
+        android:textSize="20dip"
+        android:textColor="@color/white"
+        android:maxLines="5"  
+        android:text="DroidLabs, Philippe, Intermedia-paris.com, Jacinthe Busson, Thomas Serre"
+        />
+	<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" 
+        android:gravity="center"             
+        android:textSize="20dip"
+        android:textColor="@color/white"
+        android:text="data.visitprovence.com"
+        />
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:layout_width="wrap_content"
+   		android:layout_height="wrap_content"
+   		android:layout_gravity="bottom"
+   		android:gravity="bottom"
+    	>
+    	<ImageView
+        	android:id="@+id/logo_bdrt"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentLeft="true"
+        	android:layout_alignParentBottom="true"
+        	android:contentDescription="@string/app_name" 
+        	android:src="@drawable/logo_bemyapp"
+        />
+    	<ImageView
+        	android:id="@+id/logo_bdrt"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentRight="true"
+        	android:layout_alignParentBottom="true"
+        	android:contentDescription="@string/app_name" 
+        	android:src="@drawable/patch_by_bdrt1"
+        />
+    </RelativeLayout>
+</LinearLayout>

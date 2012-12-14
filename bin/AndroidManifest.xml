@@ -37,7 +37,9 @@
         <activity android:name=".FilteredProducersActivity" 
             android:screenOrientation="portrait"
             />
-        
+        <activity android:name=".SponsorActivity" 
+            android:screenOrientation="portrait"
+            />
           <activity android:name=".FullImage" 
             android:screenOrientation="portrait"
             />

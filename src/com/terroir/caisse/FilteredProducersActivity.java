@@ -61,12 +61,8 @@ public class FilteredProducersActivity extends Activity {
 		infoButton.setOnClickListener(new OnClickListener() {				
 			@Override
 			public void onClick(View v) {	
-				Dialog dialog = new Dialog(FilteredProducersActivity.this);
-				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-				dialog.setContentView(R.layout.dialog_bdrt);				
-				ImageView logo = (ImageView) dialog.findViewById(R.id.logo_bdrt);				
-                logo.setImageResource(R.drawable.promo);                           
-                dialog.show();
+				Intent wake = new Intent(context, SponsorActivity.class);
+				startActivity(wake);
 			}
 		});
         // get the category for filtering from the initial activity

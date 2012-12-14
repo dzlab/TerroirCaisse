@@ -142,12 +142,8 @@ public class CardActivity extends Activity {
 			infoButton.setOnClickListener(new OnClickListener() {				
 				@Override
 				public void onClick(View v) {	
-					Dialog dialog = new Dialog(CardActivity.this);
-					dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-					dialog.setContentView(R.layout.dialog_bdrt);				
-					ImageView logo = (ImageView) dialog.findViewById(R.id.logo_bdrt);				
-	                logo.setImageResource(R.drawable.promo);                           
-	                dialog.show();
+					Intent wake = new Intent(context, SponsorActivity.class);
+					startActivity(wake);
 				}
 			});	
 			

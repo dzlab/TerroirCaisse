@@ -92,13 +92,9 @@ public class HomeActivity extends Activity {
         ImageView infoButton = (ImageView) findViewById(R.id.btnHomeInfo);
 		infoButton.setOnClickListener(new OnClickListener() {				
 			@Override
-			public void onClick(View v) {	
-				Dialog dialog = new Dialog(HomeActivity.this);
-				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-				dialog.setContentView(R.layout.dialog_bdrt);				
-				ImageView logo = (ImageView) dialog.findViewById(R.id.logo_bdrt);				
-                logo.setImageResource(R.drawable.promo);                           
-                dialog.show();
+			public void onClick(View v) {
+				Intent wake = new Intent(context, SponsorActivity.class);
+				startActivity(wake);
 			}
 		});
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);				
